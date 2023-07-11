@@ -1,0 +1,17 @@
+.mod{
+    background-color: rgb(70, 61, 135);
+    color: white;
+    height: 80px;
+    font-weight: bold;
+}
+i{
+    color: orange;
+}
+button:hover{
+    background-color: rgb(121, 121, 166);
+}
+img{
+    margin-left: auto; 
+    margin-right: auto; 
+    display: block;
+}

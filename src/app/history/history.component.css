@@ -1,0 +1,10 @@
+button{
+    background-color: rgb(31, 31, 109);
+    font-weight: bold;
+}
+i{
+    color: orange;
+}
+.back{
+    border-radius: 15px 50px;
+}
