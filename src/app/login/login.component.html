@@ -5,14 +5,12 @@
             <div class="text-center box container w-50" id="d">
                 <h1 id="login">Sign in</h1>
                 <div class="input col-12">
-                    <i class="fa-solid fa-user"></i>
-                    <input type="text" [placeholder]="pdata" id="u1" name="user">
+                    <input (change)="acnochange($event)" type="text" [placeholder]="pdata" id="u1" name="user" class="form-control">
                 </div>
                 <div class="input col-12">
-                    <i class="fa-solid fa-lock"></i>
-                    <input type="password" placeholder="password" id="pswd" namedl="passwor">
+                    <input (change)="paschange($event)" type="password" placeholder="password" id="pswd" namedl="passwor" class="form-control">
                 </div>
-                    <button (click)="login()" class="p-2 m-2 w-25">Sign in</button><br><br>
+                    <button (click)="login()" class="p-2 mt-2 w-25 btn text-white">Sign in</button><br><br>
                     <p class="p-2">Don't have account? <a href="">Create account</a></p>           
                  </div>
         </div>

@@ -27,9 +27,7 @@ i{
     /* height: 75vh; */
 }
 button{
-    border-radius: 30px;
     font-weight: bolder;
-    color: rgb(38, 112, 132);
     border: solid white;
 }
 button:hover{
