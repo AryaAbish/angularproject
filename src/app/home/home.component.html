@@ -1,90 +1,101 @@
 <div class="row">
-    <div class="col-lg-3 col-md-3 col-sm-12">
-        <div class="d-grid gap-2 col-6 mx-auto my-2">
-            <button class="btn mod" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-user"></i> View Profile</button>
-            <button class="btn mod" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><i class="fa-solid fa-sack-xmark"></i> Balance Enquiry</button>
-            <button class="btn mod" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1"><i class="fa-solid fa-money-bill-transfer"></i> Money Transfer</button>
-            <button class="btn mod" type="button"><i class="fa-solid fa-money-check-dollar"></i> Account Statement</button>
-            <button class="btn mod" type="button"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
-            <button class="btn mod" type="button"><i class="fa-solid fa-trash-can"></i> Delete Account</button>
-            <button class="btn mod" type="button"><i class="fa-solid fa-hand-holding-dollar text-white" style="font-size: xx-large;"></i></button>
-          </div>
-    </div>
-    <div class="col-lg-9 col-md-9 col-sm-12">
-        <h1 class="text-center p-3">Welcome to <strong style="color: red;">MY Bank</strong></h1>
-        <h3 class="text-center">Enjoy Net Banking</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam repellendus odio laudantium doloribus, voluptate nesciunt vitae quod corrupti culpa quaerat a rerum ipsa incidunt expedita quibusdam dolore voluptas non nam.
-        Suscipit voluptas porro eos eius cupiditate minima nam, eaque autem perspiciatis eum iste sunt quam distinctio reprehenderit inventore saepe aut fugit expedita accusantium molestias. Officia dicta laudantium earum natus ex.
-        Nam nostrum facere ratione sed, voluptatem alias ut, architecto adipisci veniam recusandae amet! Repellat, quos officia sint consequuntur et consectetur quo hic mollitia nam aliquid explicabo nulla numquam, vitae ipsam.
-        Ullam distinctio illum esse rerum voluptatem, laboriosam, possimus dicta enim necessitatibus quidem quaerat. Deleniti sint neque mollitia consectetur dolorum earum, quaerat minima soluta cupiditate, perferendis iure saepe odit maxime enim?</p>
-        <img src="https://i.postimg.cc/wvsYp2XS/OIP-1.jpg" alt="bank" id="d">
-    </div>
+  <div class="col-lg-3 col-md-3 col-sm-12">
+      <div class="d-grid gap-2 col-6 mx-auto my-2">
+          <button (click)="profileView()" class="btn mod" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-user"></i> View Profile</button>
+          <button (click)="balanceEnquiry()" class="btn mod" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><i class="fa-solid fa-sack-xmark"></i> Balance Enquiry</button>
+          <button class="btn mod" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1"><i class="fa-solid fa-money-bill-transfer"></i> Money Transfer</button>
+          <button (click)="statement()" class="btn mod" type="button"><i class="fa-solid fa-money-check-dollar"></i> Account Statement</button>
+          <button (click)="logout()" class="btn mod" type="button"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+          <button (click)="deleteAcc()" class="btn mod" type="button"><i class="fa-solid fa-trash-can"></i> Delete Account</button>
+          <button class="btn mod" type="button"><i class="fa-solid fa-hand-holding-dollar text-white" style="font-size: xx-large;"></i></button>
+        </div>
+  </div>
+  <div class="col-lg-9 col-md-9 col-sm-12">
+      <h2 [ngClass]="shareAcno?'c':''" class="text-center p-3">Welcome {{user}}</h2>
+      <h1 [ngClass]="shareAcno?'c':''" class="text-center p-3">Welcome to <strong style="color: red;">MY Bank</strong></h1>
+      <h3 [ngClass]="shareAcno?'c':''" class="text-center">Enjoy Net Banking</h3>
+      <p [ngClass]="shareAcno?'c':''">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam repellendus odio laudantium doloribus, voluptate nesciunt vitae quod corrupti culpa quaerat a rerum ipsa incidunt expedita quibusdam dolore voluptas non nam.
+      Suscipit voluptas porro eos eius cupiditate minima nam, eaque autem perspiciatis eum iste sunt quam distinctio reprehenderit inventore saepe aut fugit expedita accusantium molestias. Officia dicta laudantium earum natus ex.
+      Nam nostrum facere ratione sed, voluptatem alias ut, architecto adipisci veniam recusandae amet! Repellat, quos officia sint consequuntur et consectetur quo hic mollitia nam aliquid explicabo nulla numquam, vitae ipsam.
+      Ullam distinctio illum esse rerum voluptatem, laboriosam, possimus dicta enim necessitatibus quidem quaerat. Deleniti sint neque mollitia consectetur dolorum earum, quaerat minima soluta cupiditate, perferendis iure saepe odit maxime enim?</p>
+
+      <app-delete (onDelete)="deleteAccount($event)" (onCancel)="cancel()" [childAcno]="shareAcno"></app-delete>
+
+      <img [ngClass]="shareAcno?'c':''" src="https://i.postimg.cc/wvsYp2XS/OIP-1.jpg" alt="bank" id="d">
+  </div>
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Profile Details</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-        <img class="w-50" src="https://i.postimg.cc/7YyYHWzy/user.jpg" alt="user" style="border-radius: 50%;">
-        </div>
-        <div class="p-4">
-            <h4>User Name: Name</h4>
-            <h4>Account Number: 1234</h4>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Profile Details</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <img class="w-50" src="https://i.postimg.cc/7YyYHWzy/user.jpg" alt="user" style="border-radius: 50%;">
+      </div>
+      <div class="p-4">
+          <h4>User Name: {{profileData.uname}}</h4>
+          <h4>Account Number: {{profileData.acno}}</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title text-primary" id="offcanvasExampleLabel" style="font-size: xx-large;">Balance Details</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <div>
-        <img class="w-1oo my-3" src="https://i.postimg.cc/cLPX8wBw/money.jpg" alt="pic" style="height: 200px;">
-        <h3>Hi "username"</h3>
-        <h5>"username" your current balance in account 1234 is <h4 class="mt-4 text-primary">balance 0000</h4></h5>
-    </div>
-      <div class="dropdown mt-3">
-        <!-- <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-          Dropdown button
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul> -->
-      </div>
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title text-primary" id="offcanvasExampleLabel" style="font-size: xx-large;">Balance Details</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+      <img class="w-1oo my-3" src="https://i.postimg.cc/cLPX8wBw/money.jpg" alt="pic" style="height: 200px;">
+      <h3>Hi {{pbalance.uname}}</h3>
+      <h5>your current balance in account {{acno}} is <h4 class="mt-4 text-primary">balance {{pbalance.balance}}</h4></h5>
+  </div>
+    <div class="dropdown mt-3">
+      <!-- <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+        Dropdown button
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul> -->
     </div>
   </div>
+</div>
 
-  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header bg-primary">
-          <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Money Transfer</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <img src="https://i.postimg.cc/6p9yfpB3/moneytransfer.jpg" alt="tranfer" style="height: 200px; width:auto;">
-          <form action="">
-            <input class="p-2 m-3 form-control" type="text" id="acc" placeholder="Recipient account number">
-            <input class="p-2 m-3 form-control" type="text" id="amt1" placeholder="Amount">
-            <input class="p-2 m-3 form-control" type="password" id="pp1" placeholder="Password">
-            <button class="p-2 m-3" type="button" class="btn btn-success w-100">Transfer</button>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Money Transfer</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <img src="https://i.postimg.cc/6p9yfpB3/moneytransfer.jpg" alt="tranfer" style="height: 200px; width:auto;">
+        <form [formGroup]="moneyTransferForm" action="">
+          <input formControlName="toacno" class="p-2 m-3 form-control" type="text" id="acc" name="toacno" placeholder="Recipient account number">
+          <p *ngIf="moneyTransferForm.get('toacno')?.errors && moneyTransferForm.get('toacno')?.touched" class="text-danger">Accept numbers only</p>
+
+          <input formControlName="amount" class="p-2 m-3 form-control" type="text" id="amt1" name="amount" placeholder="Amount to transfer">
+          <p *ngIf="moneyTransferForm.get('amount')?.errors && moneyTransferForm.get('amount')?.touched" class="text-danger">Accept numbers only</p>
+
+          <input formControlName="psw" class="p-2 m-3 form-control" type="password" id="pp1" name="psw" placeholder="Password">
+          <p *ngIf="moneyTransferForm.get('psw')?.errors && moneyTransferForm.get('psw')?.touched" class="text-danger">Accept numbers and letters only</p>
+          
+          <button (click)="transfer()" class="p-2 m-3" type="button" class="btn btn-success w-100">Transfer</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <p [ngClass]="status?'s2':'s1'" class="me-auto fs-4">{{message}}</p>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
+</div>

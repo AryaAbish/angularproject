@@ -1,18 +1,41 @@
-<div class="row p-5">
-    <div class="col-lg-6 col-md-6 col-sm-12">
-        <div class="container w-50 p-3 mt-5 border bg-light box" id="d">
-            <h1 style="color: blue;">Sign up</h1>
-            <input id="acnum" name="ac" type="text" class=" form-control mt-2" placeholder="Account Number">
-            <input id="na" name="name" type="text" class=" form-control mt-2" placeholder="Name">
-            <input id="pass" name="password" type="password" class=" form-control mt-2" placeholder="password">
-            <input id="cpass" name="confirm" type="password" class=" form-control mt-2" placeholder=" confirm password">
-            <p id="incorrect"></p>
-            <div class="text-end">
-                <button onclick="signup()" type="submit" class="btn btn-primary mt-2">sign up</button>
-            </div>   
-         </div>
+<div class="row">
+    <div class="col-lg-5 col-md-5 col-sm-12 p-5">
+        <form [formGroup]="signUpModelform">
+            <div class="border text-center box" id="d">
+                <h1 style="color: blue;">Sign up</h1>
+                <div class="input">
+                    <input formControlName="acno" id="acnum" name="ac" type="text" class=" form-control"
+                        placeholder="Account Number">
+                    <p *ngIf="signUpModelform.get('acno')?.errors && signUpModelform.get('acno')?.touched"
+                        class="text-danger bg-white">Accept numbers only</p>
+                </div>
+                <div class="input">
+                    <input formControlName="uname" id="na" name="name" type="text" class=" form-control"
+                        placeholder="Name">
+                    <p *ngIf="signUpModelform.get('uname')?.errors && signUpModelform.get('uname')?.touched"
+                        class="text-danger bg-white">Accept letters only</p>
+                </div>
+
+                <div class="input">
+                    <input formControlName="psw" id="pass" name="password" type="password" class=" form-control"
+                        placeholder="password">
+                    <p *ngIf="signUpModelform.get('psw')?.errors && signUpModelform.get('psw')?.touched"
+                        class="text-danger bg-white">Accept numbers and letters only</p>
+
+                </div>
+                <div class="input">
+                    <input formControlName="cpsw" id="cpass" name="confirm" type="password" class=" form-control"
+                        placeholder=" confirm password">
+                    <p *ngIf="pswMatch" class="text-danger">Password doesn't match</p>
+                </div>
+
+                <div class="text-end">
+                    <button (click)="signup()" type="submit" class="btn btn-primary w-25 m-4 p-2">sign up</button>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12">
-        <img src="https://i.postimg.cc/wvsYp2XS/OIP-1.jpg" alt="bank" id="d">
+    <div class="col-lg-7 col-md-7 col-sm-12" id="two">
+        <img src="https://i.postimg.cc/wvsYp2XS/OIP-1.jpg" alt="bank" id="d" style="width: 75%;">
     </div>
-    </div>
+</div>

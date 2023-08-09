@@ -1,4 +1,36 @@
 .box{
-    background-image: url("https://i.postimg.cc/XYWT7QqF/log.webp");
-    border-radius: 50px ;
+    /* background-image: url("https://i.postimg.cc/XYWT7QqF/log.webp"); */
+    border-radius: 30px ;
+    /* width: 100%; */
+    margin-top: 20%;
+}
+.input{
+    padding: 10px;
+}
+#two{
+    height: 85vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+input{
+    /* border: solid white; */
+    border-radius: 30px;
+    padding: 10px;
+}
+button{
+    background-color: rgb(70, 61, 135);  
+}
+button:hover{
+    background-color:rgb(70, 61, 135,0.5) ;
+}
+@media(max-width:850px){
+    .box{
+        margin-top: 10px;
+    }
+}
+@media(max-width:820px){
+    #two{
+        height: auto;
+    }
 }

@@ -1,35 +1,40 @@
 <div class="row">
     <div class="col-lg-9 col-md-6 col-sm-12"> 
+      <h4 class="mt-4 mb-3 text-center w-75">{{date | date : 'medium'}}</h4>
         <h1 class="text-center m-4 p-3">Account Statement</h1>
         <div class="text-end">
             <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary">All</button>
-                <button type="button" class="btn btn-primary">Debit</button>
-                <button type="button" class="btn btn-primary">Credit</button>
+                <button (click)="searchKeychange('')" type="button" class="btn btn-primary" style="border-radius: 30px 0px 0px 30px;">All</button>
+                <button (click)="searchKeychange('DEBIT')" type="button" class="btn btn-primary">Debit</button>
+                <button (click)="searchKeychange('CREDIT')" type="button" class="btn btn-primary" style="border-radius: 0px 30px 30px 0px;">Credit</button>
             </div>
         </div>
-        <table class="table m-5">
+        <table class="table m-5 table-striped table-hover" id="d">
             <thead>
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Type</th>
                 <th scope="col">Amount</th>
+                <th scope="col">Account Holder</th>
                 <th scope="col">Date</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
+              <tr *ngFor="let i of transactions | data : searchKey:'type';let j=index">
+                <td>{{j+1}}</td>
+                <td>{{i.type}}</td>
+                <td>{{i.amount}}</td>
+                <td>{{i.User}}</td>
+                <td>{{i.date}}</td>
               </tr>
             </tbody>
         </table>
-        <button class="btn btn-primary m-4" type="button">Export As <i class="fa-solid fa-file-export"></i></button>
+        <button (click)="convertpdf()" class="btn btn-primary m-4" type="button">Export As <i class="fa-solid fa-file-export"></i></button>
     </div>
     <div class="col-lg-3 col-md-6 col-sm-12 text-center">
-        <img src="https://i.postimg.cc/6p9yfpB3/moneytransfer.jpg" alt="pic" style="width: 300px; height: auto;">      
-        <button class="btn bg-secondary text-white back">back to <i class="fa-solid fa-house"></i></button>  
+    <div>
+          <img src="https://i.postimg.cc/6p9yfpB3/moneytransfer.jpg" alt="pic" style="width: 300px; height: auto;">      
+    </div>        
+    <button (click)="back()" class="btn bg-secondary text-white back m-3">back to <i class="fa-solid fa-house"></i></button>  
     </div>
 </div>

@@ -1,21 +1,38 @@
-<h1 class="fs-3 mt-3 ms-3">Hi {{data}}</h1>
-<div class="mx-5 my-5">
-    <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12">
-            <div class="text-center box container w-50" id="d">
+<!-- <h1 class="fs-3 mt-3 ms-3">Hi {{data}} {{serviceData}} </h1> -->
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12 p-5">
+        <form [formGroup]="loginModelform">
+            <div class="text-center box border">
                 <h1 id="login">Sign in</h1>
                 <div class="input col-12">
-                    <input (change)="acnochange($event)" type="text" [placeholder]="pdata" id="u1" name="user" class="form-control">
+                    <!-- <input (change)="acnochange($event)" type="text" [placeholder]="pdata" id="u1" name="user" class="form-control"> -->
+                    <!-- <input #acno type="text" [placeholder]="pdata" id="u1" name="user" class="form-control"> -->
+                    <!-- <input [(ngModel)]="acno" type="text" [placeholder]="pdata" id="u1" name="user" class="form-control"> -->
+                    <input formControlName="acno" type="text" [placeholder]="pdata" id="u1" name="user"
+                        class="form-control">
+                    <p *ngIf="loginModelform.get('acno')?.errors && loginModelform.get('acno')?.touched"
+                        class="text-danger bg-white">Accept numbers only</p>
                 </div>
                 <div class="input col-12">
-                    <input (change)="paschange($event)" type="password" placeholder="password" id="pswd" namedl="passwor" class="form-control">
+                    <!-- <input (change)="paschange($event)" type="password" placeholder="password" id="pswd" namedl="passwor" class="form-control"> -->
+                    <!-- <input #psw type="password" placeholder="password" id="pswd" namedl="passwor" class="form-control"> -->
+                    <!-- <input formControlName="psw" [(ngModel)]="psw" type="password" placeholder="password" id="pswd" namedl="passwor" class="form-control"> -->
+                    <input formControlName="psw" type="password" placeholder="password" id="pswd" name="password"
+                        class="form-control">
+                    <p *ngIf="loginModelform.get('psw')?.errors && loginModelform.get('psw')?.touched"
+                        class="text-danger bg-white">Accept numbers and letters only</p>
                 </div>
-                    <button (click)="login()" class="p-2 mt-2 w-25 btn text-white">Sign in</button><br><br>
-                    <p class="p-2">Don't have account? <a href="">Create account</a></p>           
-                 </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-12">
-            <img src="https://i.postimg.cc/L4P3g3g8/OIP.jpg" alt="bank" id="d">
-        </div>
+                <!-- <button (click)="login(acno,psw)" class="p-2 mt-2 w-25 btn text-white">Sign in</button><br><br> -->
+                <!-- <button (click)="login()" class="p-2 mt-2 w-25 btn text-white">Sign in</button><br><br> -->
+                <button (click)="login()" class="p-2 mt-2 w-25 btn btn-primary">Sign in</button><br><br>
+                <p class="p-2">Don't have account? <a routerLink="register">Create account</a></p>
+                <!-- <p class="p-2">Don't have account? <a href="register">Create account</a></p>            -->
+            </div>
+        </form>
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-12" id="two">
+        <!-- <img src="https://i.postimg.cc/L4P3g3g8/OIP.jpg" alt="bank" id="d"> -->
+        <h1 class="fs-3 m-4 text-white">Hi {{data}}
+        </h1>
     </div>
 </div>
