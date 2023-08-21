@@ -42,7 +42,7 @@ signupApi(acno:any,uname:any,psw:any){
     uname,
     psw
   }
-  return this.http.post('http://localhost:3003/bankuser/user-register',bodyData)
+  return this.http.post('https://bankserver-k8k7.onrender.com/bankuser/user-register',bodyData)
 }
 
 //login
@@ -50,17 +50,17 @@ loginApi(acno:any,psw:any){
  const bodyData={
   acno,psw
  } 
- return this.http.post('http://localhost:3003/bankuser/user-login',bodyData)
+ return this.http.post('https://bankserver-k8k7.onrender.com/bankuser/user-login',bodyData)
 }
 
 //get user profile details
 getProfile(acno:any){
-  return this.http.get('http://localhost:3003/bankuser/user-profile/'+acno,this.createHeader())
+  return this.http.get('https://bankserver-k8k7.onrender.com/bankuser/user-profile/'+acno,this.createHeader())
 }
 
 //balance Enquiry
 getbalance(acno:any){
-  return this.http.get('http://localhost:3003/bankuser/user-balance/'+acno,this.createHeader())
+  return this.http.get('https://bankserver-k8k7.onrender.com/bankuser/user-balance/'+acno,this.createHeader())
 }
 
 //money transfer
@@ -69,17 +69,17 @@ moneyTransferApi(fromAcno:any,toAcno:any,psw:any,amount:any,date:any){
   const bodyData={
     fromAcno,toAcno,psw,amount,date
   }
-  return this.http.post('http://localhost:3003/bankuser/money-transfer',bodyData,this.createHeader())
+  return this.http.post('https://bankserver-k8k7.onrender.com/bankuser/money-transfer',bodyData,this.createHeader())
 }
 
 //transaction history
 transactionHistory(acno:any){
-  return this.http.get('http://localhost:3003/bankuser/user-history/'+acno,this.createHeader())
+  return this.http.get('https://bankserver-k8k7.onrender.com/bankuser/user-history/'+acno,this.createHeader())
 }
 
 //delete ac api
 acdelete(acno:any){
-  return this.http.delete('http://localhost:3003/bankuser/user-delete/'+acno,this.createHeader())
+  return this.http.delete('https://bankserver-k8k7.onrender.com/bankuser/user-delete/'+acno,this.createHeader())
 }
 
 }
